@@ -3,17 +3,17 @@ library(wordcloud)
 library(memoise)
 
 # The list of valid books
-candidates <<- list("Donald Trump" = "trump",
-               "Bernie Sanders" = "sanders")
+candidates <<- list("Donald Trump" = "Donald_Trump_Acceptance_Speech",
+               "Bernie Sanders" = "Bernie_Sanders_Acceptance_Speech")
 
 # Using "memoise" to automatically cache the results
-getTermMatrix <- memoise(function(candidates) {
+getTermMatrix <- memoise(function(candidate) {
   # Careful not to let just any name slip in here; a
   # malicious user could manipulate this value.
   if (!(candidate %in% candidates))
     stop("Unknown Candidate")
   
-  text <- readLines(sprintf("./%s.txt", book),
+  text <- readLines(sprintf("./%s.txt", candidate),
                     encoding="UTF-8")
   
   myCorpus = Corpus(VectorSource(text))

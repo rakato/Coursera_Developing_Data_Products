@@ -1,12 +1,12 @@
 fluidPage(
   # Application title
-  titlePanel("Word Cloud of Trump and Sanders Acceptance Speeches New Hampshire"),
+  titlePanel("Trump and Sanders Acceptance Speeches from New Hampshire"),
   
   sidebarLayout(
     # Sidebar with a slider and selection inputs
     sidebarPanel(
       selectInput("selection", "Choose a Candidate:",
-                  choices = books),
+                  choices = candidates),
       actionButton("update", "Change"),
       hr(),
       sliderInput("freq",
